@@ -20,7 +20,7 @@
 ```
 # 使用方法
 
-##### 安装python3的方法 
+### 安装python3的方法 
 ```
 	yum -y install zlib*
     tar -xvJf Python-3.6.2.tar.xz
@@ -30,9 +30,9 @@
     make install
 ```
 
-##### 安装obs模块
+### 安装obs模块
 见华为云官方文档https://support.huaweicloud.com/sdk-python-devg-obs/zh-cn_topic_0142811715.html
-##### 配置config目录里的dbinfo.ini文件
+### 配置config目录里的dbinfo.ini文件
 ```
 ;注意 ：
     ;以下所有的值，都是直接写即可，不要写单引号或者双引号
@@ -68,12 +68,12 @@ mysql_cmd_path = /data/app/mysql5.6/bin/mysql
 mysqldump_cmd_path = /data/app/mysql5.6/bin/mysqldump
 bak_parent_path = /data/dbbackup/bqj/bqj_mysqldb_backup/这个路径一定要以/结尾 是服务器上的备份目录 
 ```
-##### 运行脚本
+### 运行脚本
 ```
 python3 bin/run.py
 ```
 
-##### 创建备份用户的方法：
+### 创建备份用户的方法：
 ```
     Mysql:
         grant SELECT,RELOAD,SHOW DATABASES,SHOW VIEW,show events,LOCK TABLES,EVENT,REPLICATION CLIENT,process,execute on *.* to 'mybackuser'@'10.64.34.%' identified by 'xxxx';
