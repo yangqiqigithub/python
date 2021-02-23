@@ -2,7 +2,7 @@
 自动收集linux系统基本的系统和硬件配置信息，以及硬件使用情况
 # 使用方法
 ### 模块安装
-pip3 install requests
+pip3 install requests    
 pip3 install psutil
 
 ### 运行方式
