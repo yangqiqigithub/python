@@ -1,0 +1,390 @@
+2019-09-09 10:45:51,846  - ERROR :  iZ2zeghxqa1c7ounw13byzZ linux BasePlugin-ssh connect  error: Traceback (most recent call last):
+  File "D:\python练习\autocmdb\autocmdb\src\servermonit\base.py", line 22, in ssh
+    ssh.connect(hostname=host_dict['ip'],port=host_dict['port'], username=host_dict['username'], password=host_dict['password'])
+  File "D:\Program Files (x86)\python3.6.7\lib\site-packages\paramiko\client.py", line 446, in connect
+    passphrase,
+  File "D:\Program Files (x86)\python3.6.7\lib\site-packages\paramiko\client.py", line 764, in _auth
+    raise saved_exception
+  File "D:\Program Files (x86)\python3.6.7\lib\site-packages\paramiko\client.py", line 751, in _auth
+    self._transport.auth_password(username, password)
+  File "D:\Program Files (x86)\python3.6.7\lib\site-packages\paramiko\transport.py", line 1509, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "D:\Program Files (x86)\python3.6.7\lib\site-packages\paramiko\auth_handler.py", line 236, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+2019-09-09 10:45:51,860  - ERROR :  iZ2zeghxqa1c7ounw13byzZ linux cpu plugin error: Traceback (most recent call last):
+  File "D:\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 12, in linux
+    stdin, stdout, stderr = self.ssh.exec_command("sar -n DEV 1 1 |grep Average |grep -v lo")
+  File "D:\Program Files (x86)\python3.6.7\lib\site-packages\paramiko\client.py", line 508, in exec_command
+    chan = self._transport.open_session(timeout=timeout)
+  File "D:\Program Files (x86)\python3.6.7\lib\site-packages\paramiko\transport.py", line 879, in open_session
+    timeout=timeout,
+  File "D:\Program Files (x86)\python3.6.7\lib\site-packages\paramiko\transport.py", line 969, in open_channel
+    raise SSHException("SSH session not active")
+paramiko.ssh_exception.SSHException: SSH session not active
+
+2021-02-24 10:47:51,343  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 10:47:51,344  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 10:47:51,774  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 10:47:51,952  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 10:55:24,215  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 10:55:24,215  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 10:55:24,634  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 10:55:24,813  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 10:56:30,312  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 10:56:30,313  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 10:56:30,737  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 10:56:30,894  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 10:56:34,211  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 10:56:34,211  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 10:56:34,621  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 10:56:34,807  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 10:56:40,879  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 10:56:40,879  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 10:56:41,310  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 10:56:41,510  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 10:56:45,087  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 10:56:45,087  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 10:56:45,507  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 10:56:45,687  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 10:56:49,235  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 10:56:49,236  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 10:56:49,648  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 10:56:49,806  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 10:59:59,718  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 10:59:59,718  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 11:00:00,126  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 11:00:00,302  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 11:00:08,862  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 11:00:08,863  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 11:00:09,326  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 11:00:09,501  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 11:00:10,272  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 11:00:10,274  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 11:00:10,759  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 11:00:10,950  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 11:00:11,061  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 11:00:11,062  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 11:00:11,545  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 11:00:11,725  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 11:00:11,936  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 11:00:11,936  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 11:00:12,362  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 11:00:12,511  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 11:00:56,133  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 11:00:56,134  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 95, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 11:00:56,558  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 11:00:56,707  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+
+2021-02-24 11:04:13,360  - ERROR :  m linux disk-iostat plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 16, in exec_iostat
+    dic = self.parse_iostat(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 28, in parse_iostat
+    name_list = clear_list(re.findall('Device:.*', output)[0].split(' '))
+IndexError: list index out of range
+
+2021-02-24 11:04:13,361  - ERROR :  m linux disk plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 96, in linux
+    disk_dict = self.exec_iostat()[0]
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\disk.py", line 20, in exec_iostat
+    return dic
+UnboundLocalError: local variable 'dic' referenced before assignment
+
+2021-02-24 11:04:13,818  - ERROR :  m linux cpu plugin error: Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 14, in linux
+    response.data = self.parse(output)
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\src\servermonit\network.py", line 40, in parse
+    del nic_dict["average:"]
+KeyError: 'average:'
+
+2021-02-24 11:04:13,984  - ERROR :  m-124.70.76.34 监控数据入库错误  Error:Traceback (most recent call last):
+  File "D:\BaiduNetdiskDownload\python练习\autocmdb\autocmdb\app\views.py", line 357, in flush_minitorinfo
+    iface=data_dict['nic']['data']['iface'],
+TypeError: 'NoneType' object is not subscriptable
+

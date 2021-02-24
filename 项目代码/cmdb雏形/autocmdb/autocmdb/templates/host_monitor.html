@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+
+
+</head>
+<body>
+
+
+    <input type="text" value={{ hid }} disabled id="hid" style="display: none;">
+
+    <div >
+        <button type="button" id="i6" onclick="flush(6)">6小时</button>
+        <button type="button" id="i12" onclick="flush(12)">12小时</button>
+        <button type="button" id="i1" onclick="flush(1)">1天</button>
+        <button type="button" id="i3" onclick="flush(3)">3天</button>
+        <button type="button" id="i7" onclick="flush(7)">7天</button>
+        <button type="button" id="i14" onclick="flush(14)">14天</button>
+    </div>
+
+    <div style="width: 300px">
+        <input type="text"  name="choicetime" class="layui-input" id="test1" placeholder="请选择时间">
+    </div>
+
+    <div style="width:50%;float: left" id="left">
+
+    <div id="cpu" style="height:250px;"></div>
+    <div id="mem" style="height:250px;"></div>
+    <div id="swap" style="height:250px;"></div>
+    <div id="loadavg" style="height:250px;"></div>
+    <div id="tasks" style="height:250px;"></div>
+
+    </div>
+    <div style="width: 50%;float: left;" id="right">
+        磁盘设备
+        {% for device in device_set %}
+            <input onclick="device();" type="button" id="device" value={{ device }}>
+
+        {% endfor %}
+
+        <div id="disk_ioutil" style="height:250px;"></div>
+        <div id="disk_size_util" style="height:250px;"></div>
+        <div id="disk_count" style="height:250px;"></div>
+        <div id="disk_kbs" style="height:250px;"></div>
+
+        <div id="nic_kbs" style="height:250px;"></div>
+        <div id="nic_pak" style="height:250px;"></div>
+
+
+
+    </div>
+
+
+
+    <script src="/static/echarts.js"></script>
+    <script src="/static/jquery-1.12.4.js"></script>
+    <script src="/static/layui/layui.js"></script>
+    <script>
+
+
+        //展示利用率的图形
+
+        function show_cpu(data){
+             // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('cpu'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        //提示框
+                        tooltip: {
+                            trigger: 'axis',
+                            position: function (pt) {
+                                return [pt[0], '10%'];
+                            }
+                        },
+                         legend: {
+                            data:['cpu利用率'],
+                            x: 'left'
+                        },
+                        //标题
+                        title: {
+                                left: 'center',
+                                text: 'cpu利用率',
+                            },
+                        //显示工具箱
+                        toolbox: {
+                            feature: {
+                                dataZoom: {
+                                    yAxisIndex: 'none'
+                                },
+                                restore: {},
+                                saveAsImage: {}
+                            }
+                        },
+                        //x轴
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: data.cpu.time_range
+                                },
+                        //y轴
+                        yAxis: {
+                            type: 'value',
+                            },
+
+
+                        //区域缩放
+                        dataZoom: [{
+                            type: 'inside',
+                            start: 0,//数据窗口范围的起始百分比,表示0%
+                            end: 100 //数据窗口范围的结束百分比,表示10%
+                        }, {
+                            start: 0,
+                            end: 100,
+                            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                            handleSize: '80%',
+                            handleStyle: {
+                                color: '#fff',
+                                shadowBlur: 3,
+                                shadowColor: 'rgba(0, 0, 0, 0.6)',
+                                shadowOffsetX: 2,
+                                shadowOffsetY: 2
+                                    }
+                        }],
+
+                        series: [
+                            {//cpu
+                            data: data.cpu.cpu_util,
+                            name:'cpu利用率',
+                            type: 'line',
+                            smooth:true,
+                            symbol: 'none',
+                            itemStyle: {
+                                color: 'rgb(32,178,170)'},
+                            areaStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: 'rgb(64,224,208)'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgb(64,160,255)'
+                                }])
+                            },
+                                },
+                                ]
+                            };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+
+        }
+        function show_mem(data){
+             // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('mem'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        //提示框
+                        tooltip: {
+                            trigger: 'axis',
+                            position: function (pt) {
+                                return [pt[0], '10%'];
+                            }
+                        },
+                         legend: {
+                            data:['内存利用率'],
+                            x: 'left'
+                        },
+                        //标题
+                        title: {
+                                left: 'center',
+                                text: '内存利用率',
+                            },
+                        //显示工具箱
+                        toolbox: {
+                            feature: {
+                                dataZoom: {
+                                    yAxisIndex: 'none'
+                                },
+                                restore: {},
+                                saveAsImage: {}
+                            }
+                        },
+                        //x轴
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: data.mem.time_range
+                                },
+                        //y轴
+                        yAxis: {
+                            type: 'value',
+                            },
+
+
+                        //区域缩放
+                        dataZoom: [{
+                            type: 'inside',
+                            start: 0,//数据窗口范围的起始百分比,表示0%
+                            end: 100 //数据窗口范围的结束百分比,表示10%
+                        }, {
+                            start: 0,
+                            end: 100,
+                            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                            handleSize: '80%',
+                            handleStyle: {
+                                color: '#fff',
+                                shadowBlur: 3,
+                                shadowColor: 'rgba(0, 0, 0, 0.6)',
+                                shadowOffsetX: 2,
+                                shadowOffsetY: 2
+                                    }
+                        }],
+
+                        series: [
+                            {//cpu
+                            data: data.mem.mem_util,
+                            name:'内存利用率',
+                            type: 'line',
+                            smooth:true,
+                            symbol: 'none',
+                            itemStyle: {
+                                color: 'rgb(32,178,170)'},
+                            areaStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: 'rgb(64,224,208)'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgb(64,160,255)'
+                                }])
+                            },
+                                },
+                                ]
+                            };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                    }
+        function show_swap(data){
+             // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('swap'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        //提示框
+                        tooltip: {
+                            trigger: 'axis',
+                            position: function (pt) {
+                                return [pt[0], '10%'];
+                            }
+                        },
+                         legend: {
+                            data:['交换分区利用率'],
+                            x: 'left'
+                        },
+                        //标题
+                        title: {
+                                left: 'center',
+                                text: '交换分区利用率',
+                            },
+                        //显示工具箱
+                        toolbox: {
+                            feature: {
+                                dataZoom: {
+                                    yAxisIndex: 'none'
+                                },
+                                restore: {},
+                                saveAsImage: {}
+                            }
+                        },
+                        //x轴
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: data.swap.time_range
+                                },
+                        //y轴
+                        yAxis: {
+                            type: 'value',
+                            },
+
+
+                        //区域缩放
+                        dataZoom: [{
+                            type: 'inside',
+                            start: 0,//数据窗口范围的起始百分比,表示0%
+                            end: 100 //数据窗口范围的结束百分比,表示10%
+                        }, {
+                            start: 0,
+                            end: 100,
+                            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                            handleSize: '80%',
+                            handleStyle: {
+                                color: '#fff',
+                                shadowBlur: 3,
+                                shadowColor: 'rgba(0, 0, 0, 0.6)',
+                                shadowOffsetX: 2,
+                                shadowOffsetY: 2
+                                    }
+                        }],
+
+                        series: [
+                            {//cpu
+                            data: data.swap.swap_util,
+                            name:'交换分区利用率',
+                            type: 'line',
+                            smooth:true,
+                            symbol: 'none',
+                            itemStyle: {
+                                color: 'rgb(32,178,170)'},
+                            areaStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: 'rgb(64,224,208)'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgb(64,160,255)'
+                                }])
+                            },
+                                },
+                                ]
+                            };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                    }
+        function show_loadavg(data){
+             // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('loadavg'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                            title: {
+                                left: 'center',
+                                text: '系统负载'
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                position: function(pt) {
+                                    return [pt[0], '10%'];
+                                    }
+                                },
+                            legend: {
+                                data:['5m','10m','15m'],
+                                x: 'left'
+                            },
+                            grid: {
+                                left: '3%',
+                                right: '4%',
+                                bottom: '3%',
+                                containLabel: true
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    },
+                                    restore: {},
+                                    saveAsImage: {}
+                                    }
+                                },
+                            xAxis: {
+                                type: 'category',
+                                boundaryGap: false,
+                                data: data.loadavg.time_range
+                            },
+                            yAxis: {
+                                type: 'value'
+                            },
+
+                            dataZoom: [{
+                                type: 'inside',
+                                start: 0, // 数据窗口范围的起始百分比, 表示0 %
+                                end: 100 // 数据窗口范围的结束百分比, 表示10 %
+                            }, {
+                                start: 0,
+                                end: 100,
+                                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                                handleSize: '80%',
+                                handleStyle: {
+                                    color: '#fff',
+                                    shadowBlur: 3,
+                                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                                    shadowOffsetX: 4,
+                                    shadowOffsetY: 4
+                                }
+                            }],
+
+                        series: [
+                                {
+                                    name:'5m',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(127,255,170)'},
+                                    data:data.loadavg.m5
+                                },
+
+                                {
+                                    name:'10m',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(255,105,180)'},
+                                    data:data.loadavg.m10
+                                },
+                                {
+                                    name:'15m',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(32,178,170)'},
+                                    data:data.loadavg.m15
+                                }
+                            ]
+                        };
+            myChart.setOption(option);}
+        function show_tasks(data){
+             // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('tasks'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                            title: {
+                                left: 'center',
+                                text: '进程数量'
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                position: function(pt) {
+                                    return [pt[0], '10%'];
+                                    }
+                                },
+                            legend: {
+                                data:['running','stopped','sleeping','zombile'],
+                                x: 'left'
+                            },
+                            grid: {
+                                left: '3%',
+                                right: '4%',
+                                bottom: '3%',
+                                containLabel: true
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    },
+                                    restore: {},
+                                    saveAsImage: {}
+                                    }
+                                },
+                            xAxis: {
+                                type: 'category',
+                                boundaryGap: false,
+                                data: data.tasks.time_range
+                            },
+                            yAxis: {
+                                type: 'value'
+                            },
+
+                            dataZoom: [{
+                                type: 'inside',
+                                start: 0, // 数据窗口范围的起始百分比, 表示0 %
+                                end: 100 // 数据窗口范围的结束百分比, 表示10 %
+                            }, {
+                                start: 0,
+                                end: 100,
+                                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                                handleSize: '80%',
+                                handleStyle: {
+                                    color: '#fff',
+                                    shadowBlur: 3,
+                                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                                    shadowOffsetX: 4,
+                                    shadowOffsetY: 4
+                                }
+                            }],
+
+                        series: [
+                                {
+                                    name:'running',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(127,255,170)'},
+                                    data:data.tasks.running
+                                },
+
+                                {
+                                    name:'stopped',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(255,105,180)'},
+                                    data:data.tasks.stopped
+                                },
+                                {
+                                    name:'sleeping',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(32,178,170)'},
+                                    data:data.tasks.sleeping
+                                },
+                                                            {
+                                    name:'zombile',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(255,178,170)'},
+                                    data:data.tasks.zombile
+                                }
+                            ]
+                        };
+            myChart.setOption(option);}
+        //磁盘系列
+        function show_disk_ioutil(data){
+             // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('disk_ioutil'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        //提示框
+                        tooltip: {
+                            trigger: 'axis',
+                            position: function (pt) {
+                                return [pt[0], '10%'];
+                            }
+                        },
+                         legend: {
+                            data:['磁盘io利用率'],
+                            x: 'left'
+                        },
+                        //标题
+                        title: {
+                                left: 'center',
+                                text: data.disk.device+'磁盘io利用率',
+                            },
+                        //显示工具箱
+                        toolbox: {
+                            feature: {
+                                dataZoom: {
+                                    yAxisIndex: 'none'
+                                },
+                                restore: {},
+                                saveAsImage: {}
+                            }
+                        },
+                        //x轴
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: data.disk.time_range
+                                },
+                        //y轴
+                        yAxis: {
+                            type: 'value',
+                            },
+
+
+                        //区域缩放
+                        dataZoom: [{
+                            type: 'inside',
+                            start: 0,//数据窗口范围的起始百分比,表示0%
+                            end: 100 //数据窗口范围的结束百分比,表示10%
+                        }, {
+                            start: 0,
+                            end: 100,
+                            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                            handleSize: '80%',
+                            handleStyle: {
+                                color: '#fff',
+                                shadowBlur: 3,
+                                shadowColor: 'rgba(0, 0, 0, 0.6)',
+                                shadowOffsetX: 2,
+                                shadowOffsetY: 2
+                                    }
+                        }],
+
+                        series: [
+                            {//cpu
+                            data: data.disk.disk_io_data_list,
+                            name:'磁盘io利用率',
+                            type: 'line',
+                            smooth:true,
+                            symbol: 'none',
+                            itemStyle: {
+                                color: 'rgb(32,178,170)'},
+                            areaStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: 'rgb(64,224,208)'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgb(64,160,255)'
+                                }])
+                            },
+                                },
+                                ]
+                            };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                    }
+        function show_disk_size_util(data){
+             // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('disk_size_util'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        //提示框
+                        tooltip: {
+                            trigger: 'axis',
+                            position: function (pt) {
+                                return [pt[0], '10%'];
+                            }
+                        },
+                         legend: {
+                            data:['磁盘使用率'],
+                            x: 'left'
+                        },
+                        //标题
+                        title: {
+                                left: 'center',
+                                text: data.disk.device+'磁盘使用率',
+                            },
+                        //显示工具箱
+                        toolbox: {
+                            feature: {
+                                dataZoom: {
+                                    yAxisIndex: 'none'
+                                },
+                                restore: {},
+                                saveAsImage: {}
+                            }
+                        },
+                        //x轴
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: data.disk.time_range
+                                },
+                        //y轴
+                        yAxis: {
+                            type: 'value',
+                            },
+
+
+                        //区域缩放
+                        dataZoom: [{
+                            type: 'inside',
+                            start: 0,//数据窗口范围的起始百分比,表示0%
+                            end: 100 //数据窗口范围的结束百分比,表示10%
+                        }, {
+                            start: 0,
+                            end: 100,
+                            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                            handleSize: '80%',
+                            handleStyle: {
+                                color: '#fff',
+                                shadowBlur: 3,
+                                shadowColor: 'rgba(0, 0, 0, 0.6)',
+                                shadowOffsetX: 2,
+                                shadowOffsetY: 2
+                                    }
+                        }],
+
+                        series: [
+                            {//cpu
+                            data: data.disk.disk_size_data_list,
+                            name:'磁盘使用率',
+                            type: 'line',
+                            smooth:true,
+                            symbol: 'none',
+                            itemStyle: {
+                                color: 'rgb(32,178,170)'},
+                            areaStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: 'rgb(64,224,208)'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgb(64,160,255)'
+                                }])
+                            },
+                                },
+                                ]
+                            };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                    }
+        function show_disk_count(data){
+             // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('disk_count'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                            title: {
+                                left: 'center',
+                                text: data.disk.device+'磁盘读写请求数 次/s'
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                position: function(pt) {
+                                    return [pt[0], '10%'];
+                                    }
+                                },
+                            legend: {
+                                data:['read','write'],
+                                x: 'left'
+                            },
+                            grid: {
+                                left: '3%',
+                                right: '4%',
+                                bottom: '3%',
+                                containLabel: true
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    },
+                                    restore: {},
+                                    saveAsImage: {}
+                                    }
+                                },
+                            xAxis: {
+                                type: 'category',
+                                boundaryGap: false,
+                                data: data.disk.time_range
+                            },
+                            yAxis: {
+                                type: 'value'
+                            },
+
+                            dataZoom: [{
+                                type: 'inside',
+                                start: 0, // 数据窗口范围的起始百分比, 表示0 %
+                                end: 100 // 数据窗口范围的结束百分比, 表示10 %
+                            }, {
+                                start: 0,
+                                end: 100,
+                                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                                handleSize: '80%',
+                                handleStyle: {
+                                    color: '#fff',
+                                    shadowBlur: 3,
+                                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                                    shadowOffsetX: 4,
+                                    shadowOffsetY: 4
+                                }
+                            }],
+
+                        series: [
+                                {
+                                    name:'read',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(127,255,170)'},
+                                    data:data.disk.disk_rs_data_list
+                                },
+
+                                {
+                                    name:'write',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(255,105,180)'},
+                                    data:data.disk.disk_ws_data_list
+                                },
+
+                            ]
+                        };
+            myChart.setOption(option);}
+        function show_disk_kbs(data){
+             // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('disk_kbs'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                            title: {
+                                left: 'center',
+                                text: data.disk.device+'磁盘读写字节数 kB/s'
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                position: function(pt) {
+                                    return [pt[0], '10%'];
+                                    }
+                                },
+                            legend: {
+                                data:['read','write'],
+                                x: 'left'
+                            },
+                            grid: {
+                                left: '3%',
+                                right: '4%',
+                                bottom: '3%',
+                                containLabel: true
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    },
+                                    restore: {},
+                                    saveAsImage: {}
+                                    }
+                                },
+                            xAxis: {
+                                type: 'category',
+                                boundaryGap: false,
+                                data: data.disk.time_range
+                            },
+                            yAxis: {
+                                type: 'value'
+                            },
+
+                            dataZoom: [{
+                                type: 'inside',
+                                start: 0, // 数据窗口范围的起始百分比, 表示0 %
+                                end: 100 // 数据窗口范围的结束百分比, 表示10 %
+                            }, {
+                                start: 0,
+                                end: 100,
+                                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                                handleSize: '80%',
+                                handleStyle: {
+                                    color: '#fff',
+                                    shadowBlur: 3,
+                                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                                    shadowOffsetX: 4,
+                                    shadowOffsetY: 4
+                                }
+                            }],
+
+                        series: [
+                                {
+                                    name:'read',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(127,255,170)'},
+                                    data:data.disk.disk_rkBs_data_list
+                                },
+
+                                {
+                                    name:'write',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(255,105,180)'},
+                                    data:data.disk.disk_wkBs_data_list
+                                },
+
+                            ]
+                        };
+            myChart.setOption(option);}
+        //网卡系列
+        function show_nic_kbs(data){
+             // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('nic_kbs'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                            title: {
+                                left: 'center',
+                                text: data.nic.nic_name+'网络流入流出速率 bytes/s '
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                position: function(pt) {
+                                    return [pt[0], '10%'];
+                                    }
+                                },
+                            legend: {
+                                data:['rxbyt/s','txbyt/s'],
+                                x: 'left'
+                            },
+                            grid: {
+                                left: '3%',
+                                right: '4%',
+                                bottom: '3%',
+                                containLabel: true
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    },
+                                    restore: {},
+                                    saveAsImage: {}
+                                    }
+                                },
+                            xAxis: {
+                                type: 'category',
+                                boundaryGap: false,
+                                data: data.nic.time_range
+                            },
+                            yAxis: {
+                                type: 'value'
+                            },
+
+                            dataZoom: [{
+                                type: 'inside',
+                                start: 0, // 数据窗口范围的起始百分比, 表示0 %
+                                end: 100 // 数据窗口范围的结束百分比, 表示10 %
+                            }, {
+                                start: 0,
+                                end: 100,
+                                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                                handleSize: '80%',
+                                handleStyle: {
+                                    color: '#fff',
+                                    shadowBlur: 3,
+                                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                                    shadowOffsetX: 4,
+                                    shadowOffsetY: 4
+                                }
+                            }],
+
+                        series: [
+                                {
+                                    name:'rxbyt/s',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(127,255,170)'},
+                                    data:data.nic.disk_rxkbs_list
+                                },
+
+                                {
+                                    name:'txbyt/s',
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(255,105,180)'},
+                                    data:data.nic.disk_txkbs_list
+                                },
+
+                            ]
+                        };
+            myChart.setOption(option);}
+        function show_nic_pak(data){
+             // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('nic_pak'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                            title: {
+                                left: 'center',
+                                text: data.nic.nic_name+'网络流入流出数据包数'
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                position: function(pt) {
+                                    return [pt[0], '10%'];
+                                    }
+                                },
+                            legend: {
+                                data:["rxpck/s","txpck/s","rxcmp/s", "txcmp/s","rxmcst/s"] ,
+                                x: 'left'
+                            },
+                            grid: {
+                                left: '3%',
+                                right: '4%',
+                                bottom: '3%',
+                                containLabel: true
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    },
+                                    restore: {},
+                                    saveAsImage: {}
+                                    }
+                                },
+                            xAxis: {
+                                type: 'category',
+                                boundaryGap: false,
+                                data: data.nic.time_range
+                            },
+                            yAxis: {
+                                type: 'value'
+                            },
+
+                            dataZoom: [{
+                                type: 'inside',
+                                start: 0, // 数据窗口范围的起始百分比, 表示0 %
+                                end: 100 // 数据窗口范围的结束百分比, 表示10 %
+                            }, {
+                                start: 0,
+                                end: 100,
+                                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                                handleSize: '80%',
+                                handleStyle: {
+                                    color: '#fff',
+                                    shadowBlur: 3,
+                                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                                    shadowOffsetX: 4,
+                                    shadowOffsetY: 4
+                                }
+                            }],
+
+                        series: [
+                                {
+                                    name:"rxpck/s",
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(255,182,193)'},
+                                    data:data.nic.disk_rxpcks_list
+                                },
+
+                                {
+                                    name:"txpck/s",
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(255,105,180)'},
+                                    data:data.nic.disk_txpcks_list
+                                },
+                                 {
+                                     name:"rxcmp/s",
+                                     type:'line',
+                                     smooth: true,
+                                     symbol: 'none',
+                                     itemStyle: {
+                                         color: 'rgb(0,191,255)'},
+                                     data:data.nic.disk_rxcmps_list
+                                 },
+                                {
+                                name: "txcmp/s",
+                                type: 'line',
+                                smooth: true,
+                                symbol: 'none',
+                                itemStyle: {
+                                    color: 'rgb(135,206,250)'
+                                },
+                                data: data.nic.disk_txcmps_list
+                                },
+                                {
+                                    name:"rxmcst/s",
+                                    type:'line',
+                                    smooth: true,
+                                    symbol: 'none',
+                                    itemStyle: {
+                                        color: 'rgb(0,250,154)'},
+                                    data:data.nic.disk_rxmcsts_list
+                                 },
+
+                            ]
+                        };
+            myChart.setOption(option);}
+
+
+
+
+
+        //根据时间选择器获取数据的方法
+        layui.use('laydate', function(){
+            var laydate = layui.laydate;
+            laydate.render({
+                elem: '#test1',
+                type: 'datetime',
+                range: true,
+                done: function (time_range){
+                        $.ajax({
+                             url:'/get_monitor_data/',
+                             type:'POST',
+                             dataType:'JSON',
+                             data:{"time_range":time_range,"hid":$('#hid').val()},  //当是自动刷新的时候，不用给后端传输时间范围，后端判断前端传输的是now就直接取当前时间和往前推一个小时的时间范围的数据，返回给前端
+                             success:function (data) { //这个参数是后端发到前端来的数据
+                                 show_cpu(data); //到时候展示多少 都写到这里 页面一加载就有数据
+                                 show_mem(data);
+                                 show_loadavg(data);
+                                 show_swap(data);
+                                 show_tasks(data);
+                                 show_disk_ioutil(data);
+                                 show_disk_count(data);
+                                 show_disk_kbs(data);
+                                 show_disk_size_util(data);
+                                 show_nic_kbs(data);
+                                 show_nic_pak(data);
+
+                             }
+                         });
+                    }
+
+             });
+            });
+
+
+        //从后端获取当前时间往前一个小时范围内的数据
+        function flush(time_range){
+            $.ajax({
+                 url:'/get_monitor_data/',
+                 type:'POST',
+                 dataType:'JSON',
+                 data:{"time_range":time_range,"hid":$('#hid').val()},  //当是自动刷新的时候，不用给后端传输时间范围，后端判断前端传输的是now就直接取当前时间和往前推一个小时的时间范围的数据，返回给前端
+                 success:function (data) { //这个参数是后端发到前端来的数据
+                     show_cpu(data); //到时候展示多少 都写到这里 页面一加载就有数据
+                     show_mem(data);
+                     show_loadavg(data);
+                     show_swap(data);
+                     show_tasks(data);
+                     show_disk_ioutil(data);
+                     show_disk_count(data);
+                     show_disk_kbs(data);
+                     show_disk_size_util(data);
+                     show_nic_kbs(data);
+                     show_nic_pak(data);
+                 }
+             });
+        }
+
+        //页面一加载就执行的函数
+        $(function () {
+            flush(0);  //默认加载一个小时的数据
+        });
+
+        //定时器 每分钟刷新一次前端数据
+        setInterval('flush(0)', 120000);
+
+
+
+        function device() {
+             $.ajax({
+                 url:'/get_monitor_data/',
+                 type:'POST',
+                 dataType:'JSON',
+                 data:{"time_range":0,"hid":$('#hid').val(),"device":$('#device').val()},  //当是自动刷新的时候，不用给后端传输时间范围，后端判断前端传输的是now就直接取当前时间和往前推一个小时的时间范围的数据，返回给前端
+                 success:function (data) {
+                 }
+             });
+
+        }
+    </script>
+
+
+
+
+</body>
+</html>

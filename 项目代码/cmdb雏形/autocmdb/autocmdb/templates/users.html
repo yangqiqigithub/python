@@ -1,0 +1,155 @@
+{% extends 'layout.html' %}
+
+
+{% block css %}
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap table CSS -->
+    <link href="/static/vendors/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Toggles CSS -->
+    <link href="/static/vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
+    <link href="/static/vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="/static/dist/css/style.css" rel="stylesheet" type="text/css">
+
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+    <div class="col-xl-12">
+        <div >
+            <a href="/add_users/">
+                <button type="button" style="margin-bottom: 5px;height: 30px;width: 58px;line-height: 15px" class="btn btn-primary" >添加</button>
+            </a>
+        </div>
+        <section class="hk-sec-wrapper">
+                            <h5 class="hk-sec-title">运维组</h5>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="table-wrap">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-bordered mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>用户名</th>
+                                                        <th>邮箱</th>
+                                                        <th>手机号</th>
+                                                        <th>职位</th>
+                                                        <th>角色</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>杨琪琪</td>
+                                                        <td>yangqiqi@anne.com.cn</td>
+                                                        <td>15810270864</td>
+                                                        <td>DBA</td>
+                                                        <td>管理员</td>
+                                                        <td>
+                                                            <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i> </a>
+                                                            <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="icon-trash txt-danger"></i> </a>
+                                                        </td>
+                                                    </tr>
+                                                  
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+        </section>
+        <section class="hk-sec-wrapper">
+                            <h5 class="hk-sec-title">开发组</h5>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="table-wrap">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-bordered mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>用户名</th>
+                                                        <th>邮箱</th>
+                                                        <th>手机号</th>
+                                                        <th>职位</th>
+                                                        <th>角色</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>杨琪琪</td>
+                                                        <td>yangqiqi@anne.com.cn</td>
+                                                        <td>15810270864</td>
+                                                        <td>DBA</td>
+                                                        <td>管理员</td>
+                                                        <td>
+                                                            <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="icon-pencil"></i> </a>
+                                                            <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="icon-trash txt-danger"></i> </a>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+        </section>
+
+
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block js %}
+      <!-- jQuery -->
+    <script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/static/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Slimscroll JavaScript -->
+    <script src="/static/dist/js/jquery.slimscroll.js"></script>
+
+    <!-- FeatherIcons JavaScript -->
+    <script src="/static/dist/js/feather.min.js"></script>
+
+    <!-- Fancy Dropdown JS -->
+    <script src="/static/dist/js/dropdown-bootstrap-extended.js"></script>
+
+    <!-- Bootstrap-table JavaScript -->
+    <script src="/static/vendors/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="/static/dist/js/bootstrap-table-data.js"></script>
+
+    <!-- Peity JavaScript -->
+    <script src="/static/vendors/peity/jquery.peity.min.js"></script>
+    <script src="/static/dist/js/peity-data.js"></script>
+
+    <!-- Toggles JavaScript -->
+    <script src="/static/vendors/jquery-toggles/toggles.min.js"></script>
+    <script src="/static/dist/js/toggle-data.js"></script>
+
+    <!-- Init JavaScript -->
+    <script src="/static/dist/js/init.js"></script>
+
+{% endblock %}

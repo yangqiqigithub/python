@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+
+</head>
+<body>
+monitor
+
+{#    <input type="text" value="{{ id }}" id="id1" name="id" disabled style="display: none;">#}
+{#    <div style="width: 300px">#}
+{#        <input type="text"  name="choicetime" class="layui-input" id="test1" placeholder="请选择时间">#}
+{#    </div>#}
+{#    <div id="main" style="width:900px;height:400px;"></div>#}
+{##}
+{#    <script src="/static/echarts.js"></script>#}
+{#    <script src="/static/jquery-1.12.4.js"></script>#}
+{#    <script src="/static/layui/layui.js"></script>#}
+{#    <script>#}
+{##}
+{##}
+{#        //展示cpu和内存数据的echarts 方法#}
+{#        function show_cpu(data){#}
+{#             // 基于准备好的dom，初始化echarts实例#}
+{#                    var myChart = echarts.init(document.getElementById('main'));#}
+{##}
+{#                    // 指定图表的配置项和数据#}
+{#                    var option = {#}
+{#                        //提示框#}
+{#                        tooltip: {#}
+{#                            trigger: 'axis',#}
+{#                            position: function (pt) {#}
+{#                                return [pt[0], '10%'];#}
+{#                            }#}
+{#                        },#}
+{#                         legend: {#}
+{#                            data:['cpu利用率','内存利用率'],#}
+{#                            x: 'left'#}
+{#                        },#}
+{#                        //标题#}
+{#                        title: {#}
+{#                                left: 'center',#}
+{#                                text: 'cpu和内存利用率',#}
+{#                            },#}
+{#                        //显示工具箱#}
+{#                        toolbox: {#}
+{#                            feature: {#}
+{#                                dataZoom: {#}
+{#                                    yAxisIndex: 'none'#}
+{#                                },#}
+{#                                restore: {},#}
+{#                                saveAsImage: {}#}
+{#                            }#}
+{#                        },#}
+{#                        //x轴#}
+{#                        xAxis: {#}
+{#                            type: 'category',#}
+{#                            boundaryGap: false,#}
+{#                            data: data.cpu.time_range#}
+{#                                },#}
+{#                        //y轴#}
+{#                        yAxis: {#}
+{#                            type: 'value',#}
+{#                            },#}
+{##}
+{##}
+{#                        //区域缩放#}
+{#                        dataZoom: [{#}
+{#                            type: 'inside',#}
+{#                            start: 0,//数据窗口范围的起始百分比,表示0%#}
+{#                            end: 100 //数据窗口范围的结束百分比,表示10%#}
+{#                        }, {#}
+{#                            start: 0,#}
+{#                            end: 100,#}
+{#                            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',#}
+{#                            handleSize: '80%',#}
+{#                            handleStyle: {#}
+{#                                color: '#fff',#}
+{#                                shadowBlur: 3,#}
+{#                                shadowColor: 'rgba(0, 0, 0, 0.6)',#}
+{#                                shadowOffsetX: 2,#}
+{#                                shadowOffsetY: 2#}
+{#                                    }#}
+{#                        }],#}
+{##}
+{#                        series: [#}
+{#                            {//cpu#}
+{#                            data: data.cpu.cpu_used,#}
+{#                            name:'cpu利用率',#}
+{#                            type: 'line',#}
+{#                            smooth:true,#}
+{#                            symbol: 'none',#}
+{#                            itemStyle: {#}
+{#                                color: 'rgb(32,178,170)'},#}
+{#                            areaStyle: {#}
+{#                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{#}
+{#                                    offset: 0,#}
+{#                                    color: 'rgb(64,224,208)'#}
+{#                                }, {#}
+{#                                    offset: 1,#}
+{#                                    color: 'rgb(64,160,255)'#}
+{#                                }])#}
+{#                            },#}
+{#                                },#}
+{#                            {//内存#}
+{#                            data:  data.cpu.mem_used,#}
+{#                            name:'内存利用率',#}
+{#                            type: 'line',#}
+{#                            smooth:true,#}
+{#                            symbol: 'none',#}
+{#                            itemStyle: {#}
+{#                                color: 'rgb(255,215,0)'},#}
+{#                            areaStyle: {#}
+{#                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{#}
+{#                                    offset: 0,#}
+{#                                    color: 'rgb(240,230,140)'#}
+{#                                }, {#}
+{#                                    offset: 1,#}
+{#                                    color: 'rgb(238,232,170)'#}
+{#                                }])#}
+{#                            },#}
+{#                                },#}
+{##}
+{#                                ]#}
+{#                            };#}
+{##}
+{#                    // 使用刚指定的配置项和数据显示图表。#}
+{#                    myChart.setOption(option);#}
+{##}
+{##}
+{##}
+{##}
+{#        }#}
+{##}
+{#        //根据时间选择器获取数据的方法#}
+{#        layui.use('laydate', function(){#}
+{#            var laydate = layui.laydate;#}
+{#            laydate.render({#}
+{#                elem: '#test1',#}
+{#                type: 'datetime',#}
+{#                range: true,#}
+{#                done: function(time_range){ //这个参数就是前端选择好的时间范围#}
+{#                    $.ajax({#}
+{#                         url:'/get_monitor_data/',#}
+{#                         type:'POST',#}
+{#                         dataType:'JSON',#}
+{#                         data:{"status":"True","time_range":time_range,"id":$('#id1').val()}, //将用户选择的时间范围发给后端#}
+{#                         success:function (data) { //这个参数是后端发到前端来的数据#}
+{#                             show_cpu(data) //将各个数据模块化成函数在这里直接展示，选择一个时间，内存呀，cpu呀，磁盘呀就都显示时间范范围内的数据#}
+{#                         }#}
+{#                    });#}
+{#                }#}
+{##}
+{#             });#}
+{#            });#}
+{##}
+{##}
+{#        //从后端获取当前时间往前一个小时范围内的数据#}
+{#        function flush(){#}
+{#            $.ajax({#}
+{#                 url:'/get_monitor_data/',#}
+{#                 type:'POST',#}
+{#                 dataType:'JSON',#}
+{#                 data:{"status":"False","id":$('#id1').val()},  //当是自动刷新的时候，不用给后端传输时间范围，后端判断前端传输的是now就直接取当前时间和往前推一个小时的时间范围的数据，返回给前端#}
+{#                 success:function (data) { //这个参数是后端发到前端来的数据#}
+{#                     show_cpu(data) //到时候展示多少 都写到这里 页面一加载就有数据#}
+{#                 }#}
+{#             });#}
+{#        }#}
+{##}
+{#        //页面一记载就执行的函数#}
+{#        $(function () {#}
+{#            flush();#}
+{#        });#}
+{##}
+{#        //定时器 每分钟刷新一次前端数据#}
+{#        //setInterval('flush()', 60000)#}
+{##}
+{##}
+{#    </script>#}
+{##}
+{##}
+{##}
+
+</body>
+</html>

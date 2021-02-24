@@ -1,0 +1,135 @@
+{% extends 'layout.html' %}
+
+
+{% block css %}
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+    <!-- Data Table CSS -->
+    <link href="/static/vendors/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Toggles CSS -->
+    <link href="/static/vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
+    <link href="/static/vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="/static/dist/css/style.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="col-xl-12">
+        <section style="font-size: 12px;"  class="hk-sec-wrapper">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="table-wrap">
+                         <a href="/add_host/">
+                            <button type="button" style="margin-bottom: 5px;font-size: 13px" class="btn btn-outline-light">添加单个主机</button>
+                        </a>
+                        <a href="/add_morehosts/">
+                            <button type="button" style="margin-bottom: 5px;font-size: 13px" class="btn btn-outline-light">批量添加主机</button>
+                        </a>
+                        <a href="/flush_serverinfo/">
+                            <button type="button" style="margin-bottom: 5px;font-size: 13px" class="btn btn-outline-light">刷新</button>
+                        </a>
+
+                        <table id="datable_1" class="table table-hover w-100 display pb-30">
+                                            <thead>
+                                                <tr>
+                                                    <th>主机名</th>
+                                                    <th>外网IP</th>
+                                                    <th>内网IP</th>
+                                                    <th>系统版本</th>
+                                                    <th>配置</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                   {% for host_dict in hosts_list %}
+                                                        <tr>
+                                                            <td>{{ host_dict.hostname }}</td>
+                                                            <td>{{ host_dict.out_ip }}</td>
+                                                            <td>{{ host_dict.ip }}</td>
+                                                            <td>{{ host_dict.os_version }}</td>
+                                                            <td>{{ host_dict.cpu_cores }}核{{ host_dict.mem_total}}</td>
+                                                            <td>
+                                                                <a href="/host{{ host_dict.id }}_detail/" style="color: #9b9ea0;font-size: 13px;display: inline-block;">查看详情</a>
+                                                                <a href="/host{{ host_dict.id }}_monitor/" style="color: #9b9ea0;font-size: 13px;display: inline-block;">查看监控</a>
+                                                            </td>
+                                                        </tr>
+
+                                                {% endfor %}
+
+
+
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>主机名</th>
+                                                    <th>外网IP</th>
+                                                    <th>内网IP</th>
+                                                    <th>系统版本</th>
+                                                    <th>配置</th>
+                                                    <th colspan="2">操作</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block js %}
+        <!-- jQuery -->
+    <script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/static/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Slimscroll JavaScript -->
+    <script src="/static/dist/js/jquery.slimscroll.js"></script>
+
+    <!-- Data Table JavaScript -->
+    <script src="/static/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/static/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/static/vendors/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+    <script src="/static/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/static/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="/static/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="/static/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="/static/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/static/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/static/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/static/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/static/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/static/dist/js/dataTables-data.js"></script>
+
+    <!-- FeatherIcons JavaScript -->
+    <script src="/static/dist/js/feather.min.js"></script>
+
+    <!-- Fancy Dropdown JS -->
+    <script src="/static/dist/js/dropdown-bootstrap-extended.js"></script>
+
+    <!-- Toggles JavaScript -->
+    <script src="/static/vendors/jquery-toggles/toggles.min.js"></script>
+    <script src="/static/dist/js/toggle-data.js"></script>
+
+    <!-- Init JavaScript -->
+    <script src="/static/dist/js/init.js"></script>
+	
+{% endblock %}

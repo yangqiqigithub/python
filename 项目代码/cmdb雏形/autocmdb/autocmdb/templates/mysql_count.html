@@ -1,0 +1,170 @@
+{% extends 'layout.html' %}
+
+
+{% block css %}
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap table CSS -->
+    <link href="/static/vendors/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Toggles CSS -->
+    <link href="/static/vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
+    <link href="/static/vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="/static/dist/css/style.css" rel="stylesheet" type="text/css">
+
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+    <div class="col-xl-12">
+        <div >
+            <a href="">
+                <button type="button" style="margin-bottom: 5px;height: 30px;width: 58px;line-height: 15px" class="btn btn-primary" >添加</button>
+            </a>
+        </div>
+        <section class="hk-sec-wrapper">
+                            <h5 class="hk-sec-title">Mysql列表</h5>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="table-wrap">
+                                        <div class="table-responsive">
+                                            <table style="font-size: 12px"  class="table table-hover table-bordered mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>属于项目</th>
+                                                        <th>位置</th>
+                                                        <th>链接地址</th>
+                                                        <th>运行状态</th>
+                                                        <th>版本</th>
+                                                        <th>cpu利用率</th>
+                                                        <th>内存利用率</th>
+                                                        <th>连接数利用率</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>版权家生产Mysql</td>
+                                                        <td>版权家</td>
+                                                        <td>华为云</td>
+                                                        <td>192.168.1.1:3306</td>
+                                                        <td>运行中</td>
+                                                        <td>Mysql5.6</td>
+                                                        <td>20%</td>
+                                                        <td>30%</td>
+                                                        <td>20%</td>
+                                                        <td><a href="/mysql_detail/">管理</a></td>
+                                                    </tr>
+                                                  <tr>
+                                                        <td>版权家生产Mysql</td>
+                                                        <td>版权家</td>
+                                                        <td>华为云</td>
+                                                        <td>192.168.1.1:3306</td>
+                                                        <td>运行中</td>
+                                                        <td>Mysql5.6</td>
+                                                        <td>20%</td>
+                                                        <td>30%</td>
+                                                        <td>20%</td>
+                                                        <td><a href="/mysql_detail/">管理</a></td>
+                                                    </tr>
+                                                  <tr>
+                                                        <td>版权家生产Mysql</td>
+                                                        <td>版权家</td>
+                                                        <td>华为云</td>
+                                                        <td>192.168.1.1:3306</td>
+                                                        <td>运行中</td>
+                                                        <td>Mysql5.6</td>
+                                                        <td>20%</td>
+                                                        <td>30%</td>
+                                                        <td>20%</td>
+                                                        <td><a href="/mysql_detail/">管理</a></td>
+                                                    </tr>  <tr>
+                                                        <td>版权家生产Mysql</td>
+                                                        <td>版权家</td>
+                                                        <td>华为云</td>
+                                                        <td>192.168.1.1:3306</td>
+                                                        <td>运行中</td>
+                                                        <td>Mysql5.6</td>
+                                                        <td>20%</td>
+                                                        <td>30%</td>
+                                                        <td>20%</td>
+                                                        <td><a href="/mysql_detail/">管理</a></td>
+                                                    </tr>
+                                                  <tr>
+                                                        <td>版权家生产Mysql</td>
+                                                        <td>版权家</td>
+                                                        <td>华为云</td>
+                                                        <td>192.168.1.1:3306</td>
+                                                        <td>运行中</td>
+                                                        <td>Mysql5.6</td>
+                                                        <td>20%</td>
+                                                        <td>30%</td>
+                                                        <td>20%</td>
+                                                        <td><a href="/mysql_detail/">管理</a></td>
+                                                    </tr>
+
+                                                  
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+        </section>
+
+
+
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block js %}
+      <!-- jQuery -->
+    <script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/static/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Slimscroll JavaScript -->
+    <script src="/static/dist/js/jquery.slimscroll.js"></script>
+
+    <!-- FeatherIcons JavaScript -->
+    <script src="/static/dist/js/feather.min.js"></script>
+
+    <!-- Fancy Dropdown JS -->
+    <script src="/static/dist/js/dropdown-bootstrap-extended.js"></script>
+
+    <!-- Bootstrap-table JavaScript -->
+    <script src="/static/vendors/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="/static/dist/js/bootstrap-table-data.js"></script>
+
+    <!-- Peity JavaScript -->
+    <script src="/static/vendors/peity/jquery.peity.min.js"></script>
+    <script src="/static/dist/js/peity-data.js"></script>
+
+    <!-- Toggles JavaScript -->
+    <script src="/static/vendors/jquery-toggles/toggles.min.js"></script>
+    <script src="/static/dist/js/toggle-data.js"></script>
+
+    <!-- Init JavaScript -->
+    <script src="/static/dist/js/init.js"></script>
+
+{% endblock %}

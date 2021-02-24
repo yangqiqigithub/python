@@ -1,0 +1,118 @@
+
+
+
+{% extends 'layout_banner.html' %}
+
+{% block css %}
+    	<!-- Favicon -->
+	<link rel="shortcut icon" href="/static/favicon.ico">
+	<link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+	<!-- Bootstrap Dropzone CSS -->
+	<link href="/static/vendors/dropzone/dist/dropzone.css" rel="stylesheet" type="text/css"/>
+
+	<!-- Bootstrap Dropzone CSS -->
+	<link href="/static/vendors/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
+
+	<!-- Toggles CSS -->
+	<link href="/static/vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
+	<link href="/static/vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
+
+	<!-- Custom CSS -->
+	<link href="/static/dist/css/style.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block content %}
+
+
+		<!-- Main Content -->
+		<div >
+			<!-- Breadcrumb -->
+			<nav class="hk-breadcrumb" aria-label="breadcrumb">
+				<ol class="breadcrumb breadcrumb-light bg-transparent">
+					<li class="breadcrumb-item"><a href="#">Forms</a></li>
+					<li class="breadcrumb-item active" aria-current="page">File Upload</li>
+				</ol>
+			</nav>
+			<!-- /Breadcrumb -->
+
+			<!-- Container -->
+			<div  class="container">
+				<!-- Title -->
+				<div class="hk-pg-header">
+				</div>
+				<!-- /Title -->
+
+				<!-- Row -->
+				<div class="row">
+					<div class="col-xl-8">
+                        <section class="hk-sec-wrapper">
+                            <form action="/add_host/" method="post">
+                                <input type="text" name="ip" class="form-control mt-15" placeholder="输入ip  如：192.168.1.1">
+                                <input type="text"  name="port" class="form-control mt-15" placeholder="输入端口 如：22">
+                                <input type="text" name="username"  class="form-control mt-15" placeholder="输入用户名 如：root ">
+                                <input type="password"  name="password" class="form-control mt-15" placeholder="输入密码  如：......">
+                                <input  style="margin-top: 10px"  class="btn btn-outline-light" type="submit" value="添加主机">
+                            </form>
+
+                        </section>
+					</div>
+				</div>
+				<!-- /Row -->
+			</div>
+			<!-- /Container -->
+
+			<!-- Footer -->
+			<div class="hk-footer-wrap container">
+				<footer class="footer">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<p>Pampered by<a href="http://www.bootstrapmb.com/" class="text-dark" target="_blank">Hencework</a> © 2019</p>
+						</div>
+					</div>
+				</footer>
+			</div>
+			<!-- /Footer -->
+
+		</div>
+		<!-- /Main Content -->
+
+{% endblock %}
+
+{% block js %}
+    <!-- jQuery -->
+	<script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/static/vendors/popper.js/dist/umd/popper.min.js"></script>
+	<script src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<!-- Slimscroll JavaScript -->
+	<script src="/static/dist/js/jquery.slimscroll.js"></script>
+
+	<!-- Fancy Dropdown JS -->
+	<script src="/static/dist/js/dropdown-bootstrap-extended.js"></script>
+
+	<!-- Dropzone JavaScript -->
+	<script src="/static/vendors/dropzone/dist/dropzone.js"></script>
+
+	<!-- Dropify JavaScript -->
+	<script src="/static/vendors/dropify/dist/js/dropify.min.js"></script>
+
+	<!-- Form Flie Upload Data JavaScript -->
+	<script src="/static/dist/js/form-file-upload-data.js"></script>
+
+	<!-- FeatherIcons JavaScript -->
+	<script src="/static/dist/js/feather.min.js"></script>
+
+	<!-- Toggles JavaScript -->
+	<script src="/static/vendors/jquery-toggles/toggles.min.js"></script>
+	<script src="/static/dist/js/toggle-data.js"></script>
+
+	<!-- Init JavaScript -->
+	<script src="/static/dist/js/init.js"></script>
+{% endblock %}
+
+
