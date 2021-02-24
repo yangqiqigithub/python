@@ -1,0 +1,113 @@
+{% extends 'base2.html' %}
+{% block css %}
+
+
+{% endblock %}
+
+{% block right %}
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md12">
+        <div class="layui-card">
+          <div class="layui-card-header">设置我的资料</div>
+          <div class="layui-card-body" pad15="">
+
+            <div class="layui-form" lay-filter="userinfo">
+
+              <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="id" value={{ obj.id }} readonly="" class="layui-input" style="display: none">
+                  <input type="text" name="username" value={{ obj.name }} readonly="" class="layui-input">
+                </div>
+                  <div class="layui-form-mid layui-word-aux">用户名不可更改</div>
+              </div>
+
+              <div class="layui-form-item" >
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-block" >
+                    {% if obj.gender == 1 %}
+                        <input type="radio" name="sex" value="1" title="男" lay-filter="gender" checked="">
+                    {% elif obj.gender == 0  %}
+                        <input type="radio" name="sex" value="1" title="男" lay-filter="gender" >
+                    {% endif %}
+
+                    <div class=" layui-form-radio">
+                        <i class="layui-anim layui-icon"></i>
+                        <div>男</div>
+                    </div>
+                    {% if obj.gender == 0 %}
+                        <input type="radio" name="sex" value="0" title="女" lay-filter="gender" checked="">
+                    {% elif obj.gender == 1  %}
+                        <input type="radio" name="sex" value="0" title="女" lay-filter="gender" >
+                    {% endif %}
+
+                    <div class="layui-unselect layui-form-radio layui-form-radioed">
+                        <i class="layui-anim layui-icon"></i>
+                        <div>女</div>
+                    </div>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">手机</label>
+                <div class="layui-input-inline">
+                  <input type="text" name="phone" value={{ obj.phone }} lay-verify="phone" autocomplete="off" class="layui-input">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">邮箱</label>
+                <div class="layui-input-inline">
+                  <input type="text" name="email" value="{{ obj.email }}" lay-verify="email" autocomplete="off" class="layui-input">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label">部门</label>
+                <div class="layui-input-inline">
+                  <input type="text" name="depart" value={{ obj.depart.title }} lay-verify="part" readonly="" autocomplete="off" class="layui-input">
+                </div>
+                  <div class="layui-form-mid layui-word-aux">部门不可更改，有需要请找管理员</div>
+              </div>
+              <div class="layui-form-item layui-form-text layui-col-lg2">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+                  <textarea name="remarks" placeholder="请输入内容" class="layui-textarea" disabled>{{ obj.info }}</textarea>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <div class="layui-input-block">
+                  <button class="layui-btn" lay-submit="" lay-filter="setmyinfo">确认修改</button>
+                    <span id="error_msg"></span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+    //layui的radio默认不能点击选择 必须在script里加上前两行才行
+        layui.use('form', function(){
+          var form = layui.form;
+          form.on('submit(setmyinfo)', function(data){
+              //data.field={id: "1", username: "yangqiqi", sex: "0", phone: "15810270864", email: "yangqiqi@anne.com.cn", …}
+              var url='/userinfo/'+data.field['id'];
+              var data=JSON.stringify(data.field); //拿到的值 json一下然后后端直接json.loads()就会变成字典，直接传输data.field后端不识别
+              $.ajax({
+                url:url,
+                type:'POST',
+                data:{'data':data},
+                success:function (obj) {
+                   if (obj==='ok') {
+                      location.reload()
+                   }
+                }
+            })
+        });
+
+        });
+    </script>
+
+{% endblock %}

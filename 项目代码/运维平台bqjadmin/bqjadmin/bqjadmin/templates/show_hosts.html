@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% block css %}
+
+{% endblock %}
+
+{% block right %}
+    <div class="x-nav">
+            <span class="layui-breadcrumb">
+                <a href="/index/">首页</a>
+                <a href="">资产管理</a>
+                <a href="/hosts/">
+                    <cite>主机</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+                <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+            </a>
+        </div>
+
+    <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body ">
+                            <form class="layui-form layui-col-space5" >
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input type="text" name="hostname" placeholder="请输入主机名" autocomplete="off" class="layui-input"></div>
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input type="text" name="pri_ip" placeholder="请输入完整内网IP" autocomplete="off" class="layui-input"></div>
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input type="text" name="pub_ip" placeholder="请输入完整公网IP" autocomplete="off" class="layui-input"></div>
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <select name="status" >
+                                        <option value="">运行状态</option>
+                                        <option value="ACTIVE">ACTIVE</option>
+                                        <option value="STOPED">STOPED</option>
+                                    </select>
+                                </div>
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <select name="platform">
+                                        <option value="">平台</option>
+                                        {% for i in data.platform %}
+                                            <option value={{ i }}>{{ i }}</option>
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <select name="account">
+                                        <option value="">账号</option>
+                                        {% for i in data.account %}
+                                            <option value={{ i }}>{{ i }}</option>
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <select name="item">
+                                        <option value="">项目</option>
+                                        {% for i in data.item %}
+                                            <option value={{ i }}>{{ i }}</option>
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <select name="area">
+                                        <option value="">区域</option>
+                                         {% for i in data.area %}
+                                            <option value={{ i }}>{{ i }}</option>
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+                                <div class="layui-input-inline layui-show-xs-block" id="search">
+{#                                    <input type="button" class="layui-btn layui-btn-info" value="搜索">#}
+                                    <button class="layui-btn" lay-submit lay-filter="search">搜索</button>
+
+
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="layui-card-body">
+                                <div class="layui-input-inline layui-form">
+                                    <select name="addselectitem" lay-filter="addselectitem">
+                                        <option value="">请输入项目组</option>
+                                        {% for i in data.item %}
+                                            <option value={{ i }}>{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="layui-input-inline layui-show-xs-block" id="additem">
+                                    <button class="layui-btn">加入项目</button>
+                                    <span id="error_msg" style="color: greenyellow"></span>
+
+                                </div>
+                        </div>
+
+                        <div class="layui-card-body ">
+                            <table id="demo" lay-filter="test"></table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="/static/js/jquery.min.js"></script>
+
+
+    <script>
+        //页面加载时执行
+        $(function () {
+            var hostname=''; //页面加载的时候不存在搜索一说，初始化都是空
+            var pri_ip='';
+            var pub_ip='';
+            var status='';
+            var platform='';
+            var account='';
+            var item='';
+            var area='';
+            main(hostname,pri_ip,pub_ip,status,platform,account,item,area);
+
+
+        });
+
+        //主体函数 用来展示数据 分页
+        function main(hostname,pri_ip,pub_ip,status,platform,account,item,area){
+            layui.use('table', function(){
+            var table = layui.table;
+
+            //展示主机信息
+            table.render({
+                elem: '#demo'
+                ,method:"get"
+                //,height: 500
+                ,toolbar: '#toolbarDemo'
+                ,url: '/get_hosts_json/' //获取数据接口
+                ,where:{hostname:hostname,pri_ip:pri_ip,pub_ip:pub_ip,status:status,
+                    platform:platform,account:account,item:item,area:area} //传输给后端的参数
+                ,page: true //开启分页
+                ,cols: [[ //表头
+                    {type: 'checkbox', width: 50},
+                    {field: 'id', title: 'ID',width: 80, sort: true},
+                    {field: 'host_id', title: '主机ID', sort: true},
+                    {field: 'hostname', title: '主机名',width:250, sort: true, event: 'setSign',},
+                    {field: 'pri_ip', title: '内网IP', sort: true},
+                    {field: 'pub_ip', title: '公网IP', sort: true},
+                    {field: 'status', title: '运行状态', sort: true, templet: function (d) {
+
+                                    if (d.status == "ACTIVE" || d.status == "active") {
+                                        return '<button type="button" class="layui-btn layui-btn-sm ">' + d.status + '</button>'
+                                    }
+                                    else {
+                                        return '<button type="button" class="layui-btn  layui-btn-danger  layui-btn-sm ">' + d.status + '</button>'
+                                    }
+                                }},
+                    {field: 'image', title: '镜像', sort: true},
+                    {field: 'config', title: '配置',sort: true},
+                    {field: 'platform', title: '平台',sort: true},
+                    {field: 'account', title: '账号', sort: true},
+                    {field: 'item', title: '项目', sort: true},
+                    {field: 'region', title: '区域', sort: true},
+                    {field: 'ctime', title: '创建时间', sort: true},
+                   // {field: 'test', title: '操作', sort: true, templet: function (d) {
+
+                       // return '<button type="button" class="layui-btn  layui-btn-danger  layui-btn-sm ">' + '删除' + '</button>'
+
+                               // }},
+                  ]]
+                });
+            //点击表中的单元格就跳到展示本行主机详细信息的页面
+            table.on('tool(test)', function(obj){
+                var data = obj.data;
+                var hostid=data.id;
+                if(obj.event === 'setSign') {
+                    location.href = '/hosts/hostinfo/' + hostid
+                }
+              });
+            });
+            }
+
+        //当点击搜索按钮的时候触发的函数
+        $("#search").click(function(){
+            layui.use('form', function(){
+              var form = layui.form;
+              form.on('submit(search)', function(data){
+                  var data=data.field ;//当前容器的全部表单字段，名值对形式：{name: value}
+                  var hostname=data['hostname'];
+                  var pri_ip=data['pri_ip'];
+                  var pub_ip=data['pub_ip'];
+                  var status=data['status'];
+                  var platform=data['platform'];
+                  var account=data['account'];
+                  var item=data['item'];
+                  var area=data['area'];
+
+
+                  main(hostname,pri_ip,pub_ip,status,platform,account,item,area);
+
+                  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                });
+            });
+
+
+
+         });
+
+
+
+        //**整个实现将主机加入项目的代码开始
+        //动态获取选择的项目
+        layui.use('form', function(){
+          var form = layui.form;
+          form.on('select(addselectitem)', function(data){
+              select_add_item=data.value;
+            });
+        });
+
+        //让数组可以删除指定元素的方法开始
+        Array.prototype.remove = function(val) {
+            var index = this.indexOf(val);
+            if (index > -1) {
+            this.splice(index, 1);
+            }
+        };
+        //让数组可以删除指定元素的方法结束
+        //动态获取选择的主机
+        layui.use('table', function() {
+            var table = layui.table;
+            arry=new Array();
+            table.on('checkbox(test)', function(obj){
+
+                if(obj.type==="all"){
+                    if(obj.checked){ //全选
+                        var checkStatus=table.checkStatus('demo'); //这里是id不是lay-filter
+                        var data=checkStatus.data;
+                        arry=$.map(data, function (o) {return o.id}); //主机ID列表
+                }else{
+                        arry=new Array(); //全不选
+                    }
+
+                }else{ //非全选中
+                    if (obj.checked){
+                        arry.push(obj.data.id)
+                    }else{
+                        arry.remove(obj.data.id)
+                    }
+                }
+                console.log(arry)
+            });
+
+        });
+        //点击加入项目按钮触发的事件
+        $('#additem').click(function () {
+            $.ajax({
+                url:/hostToitem/,
+                traditional:true,
+                type:'POST',
+                data:{'item':select_add_item,'hostid_list':arry},
+                success:function (obj) {
+                    $('#error_msg').text(obj);
+                }
+            })
+
+        });
+         //**整个实现将主机加入项目的代码结束
+
+    </script>
+
+
+
+
+{% endblock %}
+

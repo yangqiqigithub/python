@@ -1,0 +1,196 @@
+{% load staticfiles %}
+{% load rbac %}
+<!DOCTYPE html>
+<html class="x-admin-sm">
+<head>
+        <meta charset="UTF-8">
+        <title>BQJAdmin</title>
+
+        <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %} "/>
+        <link rel="stylesheet" href="{% static 'plugins/font-awesome/css/font-awesome.css' %} "/>
+        <link rel="stylesheet" href="{% static 'css/commons.css' %} "/>
+        <link rel="stylesheet" href="{% static 'css/nav.css' %} "/>
+        <link rel="stylesheet" href="{% static 'rbac/css/rbac.css' %} "/>
+        <link rel="stylesheet" href="/static/css/xadmin.css">
+        <link rel="stylesheet" href="/static/css/theme49.min.css">
+        <script src="/static/lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/static/js/xadmin.js"></script>
+        <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+        <!--[if lt IE 9]>
+          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <style>
+        body {
+            margin: 0;
+        }
+
+        .no-radius {
+            border-radius: 0;
+        }
+
+        .no-margin {
+            margin: 0;
+        }
+
+        .pg-body > .left-menu {
+            background-color: #EAEDF1;
+            position: absolute;
+            left: 1px;
+            top: 48px;
+            bottom: 0;
+            width: 220px;
+            border: 1px solid #EAEDF1;
+            overflow: auto;
+        }
+
+        .pg-body > .right-body {
+            position: absolute;
+            left: 225px;
+            right: 0;
+            top: 48px;
+            bottom: 0;
+            overflow: scroll;
+            border: 1px solid #ddd;
+            border-top: 0;
+            font-size: 13px;
+            min-width: 755px;
+        }
+
+        .navbar-right {
+            float: right !important;
+            margin-right: -15px;
+        }
+
+        .luffy-container {
+            padding: 15px;
+        }
+
+
+    </style>
+
+        {% block css %}{% endblock %}
+</head>
+<body class="index">
+
+    <div class="container">
+                <div class="logo">
+                    <a href="">BQJAdmin</a></div>
+                <div class="left_open">
+                    <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
+                </div>
+                <ul class="layui-nav right" lay-filter="">
+                    <li class="layui-nav-item">
+                        {% if request.session.user_info %} {# 这条语句用于判断session中是否存在user_info #}
+                            <a href="javascript:;">{{ request.session.user_info.name }}</a>  {# 取出自己想要的值 #}
+                        {% endif %}
+
+                        <dl class="layui-nav-child">
+                            <!-- 二级菜单 -->
+                            <dd>
+                                {% if request.session.user_info %}
+                                    <a href="/userinfo/{{ request.session.user_info.id }}">个人信息</a>
+                                {% elif not request.session.user_info %}
+                                    <a>个人信息</a>
+                                {% endif %}
+                            </dd>
+                            <dd>
+                                <a href="/login/">切换帐号</a>
+                            </dd>
+                            <dd>
+                                <a href="/logout/">退出</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+    <div class="left-nav">
+            <div id="side-nav">
+                <ul id="nav">
+                    <li>
+                        <a href="/index/" style="text-decoration: none">
+                            <i class="layui-icon layui-icon-radio" style="font-size: 20px;"></i>
+                            <cite>数据库管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/index/"  style="text-decoration: none">
+                            <i class="layui-icon layui-icon-radio" style="font-size: 20px;"></i>
+                            <cite>配置管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/index/"  style="text-decoration: none">
+                            <i class="layui-icon layui-icon-radio" style="font-size: 20px;"></i>
+                            <cite>业务部署</cite>
+                            <i class="iconfont nav_right">&#xe697;</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/index/"  style="text-decoration: none">
+                            <i class="layui-icon layui-icon-radio" style="font-size: 20px;"></i>
+                            <cite>资产管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="/hosts/"  style="text-decoration: none">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>主机</cite>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/index/"  style="text-decoration: none">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>Mysql</cite>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/index/"  style="text-decoration: none">
+                            <i class="layui-icon layui-icon-radio" style="font-size: 20px;"></i>
+                            <cite>账号管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/index/"  style="text-decoration: none">
+                            <i class="layui-icon layui-icon-radio" style="font-size: 20px;"></i>
+                            <cite>监控管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/index/"  style="text-decoration: none">
+                            <i class="layui-icon layui-icon-radio" style="font-size: 20px;"></i>
+                            <cite>权限管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i>
+                        </a>
+                    </li>
+
+
+
+                </ul>
+            </div>
+        </div>
+    <div class="page-content">
+        <div>
+            {% breadcrumb request %}
+        </div>
+        {% block content %} {% endblock %}
+
+    </div>
+
+
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.js' %} "></script>
+<script src="{% static 'rbac/js/rbac.js' %} "></script>
+
+{% block js %} {% endblock %}
+</body>
+</html>

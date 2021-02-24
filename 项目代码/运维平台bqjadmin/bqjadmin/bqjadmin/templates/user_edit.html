@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% block css %}
+
+{% endblock %}
+
+{% block right %}
+    <div class="x-nav">
+            <span class="layui-breadcrumb">
+                <a href="/index/">首页</a>
+                <a href="">管理员管理</a>
+                <a href="/users/">用户管理</a>
+                <a href="/users/useredit/{{ data.id }}">
+                    <cite>编辑用户</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+                <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+            </a>
+    </div>
+    <div class="layui-fluid">
+            <div class="layui-row">
+                <form class="layui-form">
+                    <div class="layui-form-item" style="display: none">
+                      <label for="id" class="layui-form-label">
+                      </label>
+                      <div class="layui-input-inline">
+                          <input type="text" id="id" name="id" required="" lay-verify="required"
+                          autocomplete="off" class="layui-input" value="{{ data.id }}">
+                      </div>
+
+                  </div>
+                    <div class="layui-form-item">
+                      <label for="username" class="layui-form-label">
+                          <span class="x-red">*</span>登录名
+                      </label>
+                      <div class="layui-input-inline">
+                          <input type="text" id="username" name="username" required="" lay-verify="required"
+                          autocomplete="off" class="layui-input" value="{{ data.name }}">
+                      </div>
+                      <div class="layui-form-mid layui-word-aux">
+                          <span class="x-red">*</span>将会成为您唯一的登入名
+                      </div>
+                  </div>
+                    <div class="layui-form-item">
+                      <label for="nickname" class="layui-form-label">
+                          <span class="x-red">*</span>昵称
+                      </label>
+                      <div class="layui-input-inline">
+                          <input type="text" id="nickname" name="nickname" required="" lay-verify="required"
+                          autocomplete="off" class="layui-input" value="{{ data.nickname }}">
+                      </div>
+                  </div>
+                    <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="x-red">*</span>性别</label>
+                    <div class="layui-input-block" >
+                        {% if data.gender == 1 %}
+                            <input type="radio" name="sex" value="1" title="男" lay-filter="gender" checked="">
+                        {% elif data.gender == 0  %}
+                            <input type="radio" name="sex" value="1" title="男" lay-filter="gender" >
+                        {% endif %}
+
+                        <div class=" layui-form-radio">
+                            <i class="layui-anim layui-icon"></i>
+                            <div>男</div>
+                        </div>
+                        {% if data.gender == 0 %}
+                            <input type="radio" name="sex" value="0" title="女" lay-filter="gender" checked="">
+                        {% elif data.gender == 1  %}
+                            <input type="radio" name="sex" value="0" title="女" lay-filter="gender" >
+                        {% endif %}
+
+                    <div class="layui-unselect layui-form-radio layui-form-radioed">
+                        <i class="layui-anim layui-icon"></i>
+                        <div>女</div>
+                    </div>
+                </div>
+                  </div>
+                    <div class="layui-form-item">
+                      <label for="phone" class="layui-form-label">
+                          <span class="x-red">*</span>手机
+                      </label>
+                      <div class="layui-input-inline">
+                          <input type="text" id="phone" name="phone" required="" lay-verify="phone"
+                          autocomplete="off" class="layui-input" value="{{ data.phone }}">
+                      </div>
+
+                  </div>
+                    <div class="layui-form-item">
+                      <label for="L_email" class="layui-form-label">
+                          <span class="x-red">*</span>邮箱
+                      </label>
+                      <div class="layui-input-inline">
+                          <input type="text" id="L_email" name="email" required="" lay-verify="email"
+                          autocomplete="off" class="layui-input" value="{{ data.email }}">
+                      </div>
+                  </div>
+                    <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="x-red">*</span>部门</label>
+                    <div class="layui-input-inline">
+                      <select name="depart" lay-verify="required">
+                        <option value=""></option>
+                          {% for depart in departs %}
+
+                            {% if data.depart == depart.title %}
+                                <option value="{{ depart.title }}" selected="" >{{ depart.title }}</option>
+                            {% elif data.depart != depart.title  %}
+                                <option value="{{ depart.title }}">{{ depart.title }}</option>
+                            {% endif %}
+                          {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label"><span class="x-red">*</span>角色</label>
+                      <div class="layui-input-block">
+                          {% for role in roles %}
+                            {% if role.title in data.roles %}
+                                <input type="checkbox" name="role" lay-skin="primary" value="{{ role.title }}" title="{{ role.title }}" checked="">
+                            {% elif role.title not  in data.roles  %}
+                                <input type="checkbox" name="role" lay-skin="primary" value="{{ role.title }}" title="{{ role.title }}" >
+                            {% endif %}
+                          {% endfor %}
+
+
+
+                      </div>
+                    </div>
+                  <div class="layui-form-item">
+                      <label for="L_pass" class="layui-form-label">
+                          <span class="x-red">*</span>密码
+                      </label>
+                      <div class="layui-input-inline">
+                          <input type="password" id="L_pass" name="pass" required="" lay-verify="pass"
+                          autocomplete="off" class="layui-input">
+                      </div>
+                      <div class="layui-form-mid layui-word-aux">
+                          6到16个字符
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label for="L_repass" class="layui-form-label">
+                          <span class="x-red">*</span>确认密码
+                      </label>
+                      <div class="layui-input-inline">
+                          <input type="password" id="L_repass" name="repass" required="" lay-verify="repass"
+                          autocomplete="off" class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label for="L_repass" class="layui-form-label">
+                      </label>
+                      <button  class="layui-btn" lay-filter="add" lay-submit="">
+                          修改
+                      </button>
+                  </div>
+              </form>
+            </div>
+        </div>
+
+
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        layui.use(['form', 'layer'],
+            function() {
+                $ = layui.jquery;
+                var form = layui.form,
+                layer = layui.layer;
+
+                //自定义验证规则
+                form.verify({
+                    pass: [/(.+){6,12}$/, '密码必须6到12位'],
+                    repass: function(value) {
+                        if ($('#L_pass').val() != $('#L_repass').val()) {
+                            return '两次密码不一致';
+                        }
+                    }
+                });
+
+                //监听提交
+                form.on('submit(add)',
+                function(data) {
+                    //修改用户的代码开始
+                    var data=JSON.stringify(data.field);
+                    var arr_box = [];
+                    $('input[type=checkbox]:checked').each(function() {
+                      arr_box.push($(this).val());
+                    });
+                    //数组角色 默认拿不到列表 只是拿到一个元素，所以角色列表单独传输
+                    //console.log(arr_box);
+
+                    //发异步，把数据提交给后端
+                    $.ajax({
+                        url:"/users/useredit/0",
+                        type:'POST',
+                        traditional:true,
+                        data:{'data':data,'role_list':arr_box},
+                        success:function (obj) {
+                            if(obj === 'true'){
+                                layer.alert("修改成功", {
+                                    //icon: 6
+                                },
+                                function() {
+                                    //关闭当前frame
+                                   xadmin.close();
+
+                                    // 可以对父窗口进行刷新
+                                    xadmin.father_reload();
+                                });
+                            }else {
+                                layer.alert("修改失败", {
+                                    //icon: 6
+                                })
+                            }
+                        }
+                    });
+                    return false;
+                    //修改用户的代码结束
+                });
+
+            });</script>
+
+
+
+
+{% endblock %}
+

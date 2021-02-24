@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block css %}
+
+
+{% endblock %}
+
+{% block right %}
+    <div class="x-nav">
+          <span class="layui-breadcrumb">
+            <a href="/index/">首页</a>
+            <a href="">管理员管理</a>
+            <a href="/users/">
+              <cite>用户管理</cite></a>
+          </span>
+          <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+        </div>
+    <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body ">
+                            <form class="layui-form layui-col-space5">
+                                <div class="layui-inline layui-show-xs-block">
+                                    <input type="text" name="username"  placeholder="请输入用户名搜索" autocomplete="off" class="layui-input" id="search_choice" >
+                                </div>
+                                <div class="layui-inline layui-show-xs-block" id="search">
+                                    <button class="layui-btn"  lay-submit="" lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="layui-card-header">
+                            <button class="layui-btn"><i class="layui-icon"></i><a style="color: white" href="/users/useradd/">添加</a></button>
+                        </div>
+
+                        <div class="layui-card-body ">
+                            <table id="demo" lay-filter="test"></table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="/static/js/jquery.min.js"></script>
+
+
+    <script>
+        //页面加载时执行
+        $(function () {
+            var name=''; //页面加载的时候不存在搜索一说，初始化都是空
+            main(name);
+
+        });
+
+        //主体函数 用来展示数据 分页
+        function main(name){
+            layui.use('table', function(){
+            var table = layui.table;
+
+            //展示主机信息
+            table.render({
+                elem: '#demo'
+                ,method:"get"
+                //,height: 500
+                ,toolbar: '#toolbarDemo'
+                ,url: '/get_json_user/' //获取数据接口
+                ,where:{name:name} //传输给后端的参数
+                ,page: true //开启分页
+                ,cols: [[ //表头
+                    {field: 'id', title: 'ID',width: 80, sort: true},
+                    {field: 'name', title: '登录名', sort: true},
+                    {field: 'nickname', title: '昵称',sort: true},
+                    {field: 'gender', title: '性别', sort: true},
+                    {field: 'phone', title: '手机', sort: true},
+                    {field: 'email', title: '邮件', sort: true},
+                    {field: 'depart', title: '部门', sort: true},
+                    {field: 'roles', title: '角色',sort: true,templet:function (d) {
+                        return '<a href="/rbac/distribute/permissions/?uid='+d.id+'"'+'  title="点我查看详细权限" >'+d.roles+'</a>'
+
+                        }},
+                    {field: 'ctime', title: '创建时间',sort: true},
+                    {field: 'operation', title: '操作', sort: true, templet: function (d) {
+
+                        return '<a title="编辑"  href="/users/useredit/'+d.id+'"> <i class="layui-icon">&#xe642;</i> </a> <a style="color: #d9534f;" title="删除" onclick="member_del('+d.id+')'+'" href="javascript:;"> <i class="layui-icon"></i> <span id="error_msg" style="color: red"></span> </a>'
+
+                        }},
+                  ]]
+                });
+            });
+            }
+
+        //搜索
+        $('#search').click(function () {
+            var name=$('#search_choice').val();
+            main(name);
+            return false;
+        });
+          /*用户-删除*/
+        function member_del(id){
+          layer.confirm('确认要删除吗？',function(){
+              $.ajax({
+                        url:"/users/userdel/",
+                        type:'POST',
+                        data:{'id':id},
+                        success:function (obj) {
+                            if(obj === 'true'){
+                                location.reload()
+                            }else {
+                                $('#error_msg').text('删除失败');
+                            }
+                        }
+                    });
+
+          });
+      }
+
+
+
+
+
+    </script>
+{% endblock %}

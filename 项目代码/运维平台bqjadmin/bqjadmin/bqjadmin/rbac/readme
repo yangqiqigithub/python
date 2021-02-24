@@ -1,0 +1,54 @@
+RBAC组件的使用文档
+
+1、将rbac组件拷贝项目,放在总目录下，和app项目同级即可
+2、将rbac/migrations目录中的数据库迁移记录删除，但是要保留__init__.py文件
+3、要在总路由里添加rbac相关的路径，加上namespace这个属性
+urlpatterns = [
+    ...
+    path('rbac/', include(('rbac.urls','rbac'), namespace='rbac')),,django2是这样写 按照自己的django版本选择一条
+    url(r'^rbac/', include('rbac.urls', namespace='rbac')), django1是这样写
+]
+4、在总项目的settings.py里注册rbac
+INSTALLED_APPS = [
+     ...
+    'rbac.apps.RbacConfig'  #加上这个
+    ]
+5、app的用户表要继承rbac的用户表
+api/models.py #我这里api这个app是专门负责models这块的
+代码如下：
+from rbac.models import UserInfo as RbacUserInfo #导入rbac的用户表
+class UserInfo(RbacUserInfo): #app的用户表继承rbac的用户表，表可以自定义，但是一定要继承
+    """
+    用户表
+    """
+    nickname = models.CharField(verbose_name='姓名', max_length=16)
+    phone = models.CharField(verbose_name='手机号', max_length=32)
+    gender_choices = (
+        (1, '男'),
+        (2, '女'),
+    )
+    gender = models.IntegerField(verbose_name='性别', choices=gender_choices, default=1)
+    depart = models.ForeignKey(verbose_name='部门', to="Department",on_delete=models.Case)
+    def __str__(self):
+        return self.nickname
+
+
+6、执行以下命令会根据rbac/models.py建立权限相关的表
+python3 manage.py makemigrations
+python3 manage.py migrate
+执行完毕后会出现以下几张表
+rbac_menu rbac_permission rbac_role rbac_role_permissions 只有自己的用户表
+
+7、
+
+
+
+
+
+
+
+
+
+
+
+

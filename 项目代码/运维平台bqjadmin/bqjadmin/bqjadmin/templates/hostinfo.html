@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block css %}
+    <style>
+
+        .test {
+            font-size: 50px;
+        }
+    </style>
+{% endblock %}
+
+{% block right %}
+    <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">主机信息</div>
+                        <div class="layui-card-body ">
+                            <table class="layui-table">
+                                <tbody>
+                                    <tr>
+                                        <th>ID</th>
+                                        <td>{{ obj.id }}</td></tr>
+                                    <tr>
+                                        <th>主机ID</th>
+                                        <td>{{ obj.host_id }}</td></tr>
+                                    <tr>
+                                        <th>主机名</th>
+                                        <td>{{ obj.hostname }}</td></tr>
+                                    <tr>
+                                        <th>公网IP</th>
+                                        <td>{{ obj.pub_ip }}</td>
+
+                                    <tr>
+                                        <th>内网IP</th>
+                                        <td>{{ obj.pri_ip }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>状态</th>
+                                        <td>{{ obj.status }}</td></tr>
+                                    <tr>
+                                        <th>镜像</th>
+                                        <td>{{ obj.image_name }}</td></tr>
+                                    <tr>
+                                        <th>内存/G</th>
+                                        <td>{{ obj.memory }}</td></tr>
+                                    <tr>
+                                        <th>CPU/核</th>
+                                        <td>{{ obj.cpu }}</td></tr>
+                                    <tr>
+                                        <th>磁盘/G</th>
+                                        <td>{{ obj.volume_list }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>区域</th>
+                                        <td>{{ obj.area.property_area }}</td></tr>
+                                    <tr>
+                                        <th>所属项目</th>
+                                        <td>{{ obj.item.itemname}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>所属账户</th>
+                                        <td>{{ obj.account.username }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>所属平台</th>
+                                        <td>{{ obj.platform.platname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>创建时间</th>
+                                        <td>{{ obj.ctime  | date:"Y-m-d H:i:s" }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}
