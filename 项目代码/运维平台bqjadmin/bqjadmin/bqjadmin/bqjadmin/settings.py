@@ -88,11 +88,11 @@ WSGI_APPLICATION = 'bqjadmin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'xx',  # 自己先创建数据库 orm不会自己建库
-        'USER': 'xxx',
-        'PASSWORD': 'xxx',
-        'HOST': 'xxx',
-        'PORT': 'xxx',
+        'NAME': 'cmdb',  # 自己先创建数据库 orm不会自己建库
+        'USER': 'root',
+        'PASSWORD': '123@qwe',
+        'HOST': '124.70.76.34',
+        'PORT': '3306',
     }
 }
 # Password validation

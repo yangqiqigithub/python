@@ -32,6 +32,7 @@ python3 ./bin/get_appmoni.py
 python3 ./bin/get_serverinfo.py
 python3 ./bin/get_servermoni.py
 ```
+可以会用ansible将客户端批量部署到系统上
 # bqjadmin服务端介绍
 ### 程序结构说明
 ```
