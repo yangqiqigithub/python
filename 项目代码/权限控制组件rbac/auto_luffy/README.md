@@ -76,7 +76,7 @@ class UserInfo(models.Model):
 用户和角色的关系：多对多
 一个用户有多个角色，一个角色可以属于多个用户
 ```
-##### 角色表 rbac_roe
+##### 角色表 rbac_role
 id | title
 ---|---
 1 | CEO
@@ -99,8 +99,8 @@ class Role(models.Model):
 ```
 
 ##### 权限表 rbac_permission
-id | title | url | name | menu_id | pid_id 
----|--- | --- | --- | --- | --- | ---
+id | title | url | name | menu_id | pid_id
+---|---|---|---|---|---
 4 | 用户列表 | /user/list/ | user_list | 2 | null 
 5 | 添加用户 | /user/add/ | user_add | null | 4
 6 | 编辑用户 | /user/edit/(?P<pk>\d+)/ | user_edit | null | 4
