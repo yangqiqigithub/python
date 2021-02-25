@@ -48,7 +48,6 @@ cmdb 程序主要功能
     views 核心代码目录
         account.py 处理用户和用户组的展示、编辑、删除
         show_hosts.py 处理主机的展示、模糊和组合搜索、排序、分页等等
-rbac 专门单独出来处理权限问题的
-    用户绑定角色，不同的角色对应不同的策略，不同的策略绑定不同的路径，
-    从而实现不同的用户访问不同的路径也就是有不同的权限
+rbac  一个写好的rbac组件，是通用的，可以稍微修改嵌套到需要权限控制的项目里
+      具体的原理可以参考本github中权限组件 https://github.com/yangqiqigithub/python/tree/master/%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6%E7%BB%84%E4%BB%B6rbac/auto_luffy 
 ```
