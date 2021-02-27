@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a39051ad-1a15-40a0-9d18-a545ab2ccba7" name="Default Changelist" comment="" />
+    <list default="true" id="a39051ad-1a15-40a0-9d18-a545ab2ccba7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../权限控制组件rbac/auto_luffy/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../权限控制组件rbac/auto_luffy/.idea/dataSources/822021ab-65e8-4ceb-afdf-bbce4c501bdb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../权限控制组件rbac/auto_luffy/.idea/dataSources/822021ab-65e8-4ceb-afdf-bbce4c501bdb.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../权限控制组件rbac/auto_luffy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../权限控制组件rbac/auto_luffy/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../运维平台bqjadmin/bqjadmin/bqjadmin/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../运维平台bqjadmin/bqjadmin/bqjadmin/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../运维平台bqjadmin/bqjadmin/bqjadmin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../运维平台bqjadmin/bqjadmin/bqjadmin/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +34,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
   <component name="ProjectId" id="1oscgvw1AWZudHxUl6ACh97Losd" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -231,6 +242,7 @@
       <workItem from="1568811433002" duration="4618000" />
       <workItem from="1568897496407" duration="311000" />
       <workItem from="1614078855123" duration="6241000" />
+      <workItem from="1614309812887" duration="609000" />
     </task>
     <servers />
   </component>

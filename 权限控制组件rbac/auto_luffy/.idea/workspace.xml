@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0a51f95e-e2f8-4d18-a29a-131524e9f001" name="Default" comment="" />
+    <list default="true" id="0a51f95e-e2f8-4d18-a29a-131524e9f001" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../cmdb雏形/autocmdb/autocmdb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../cmdb雏形/autocmdb/autocmdb/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/822021ab-65e8-4ceb-afdf-bbce4c501bdb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/822021ab-65e8-4ceb-afdf-bbce4c501bdb.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../运维平台bqjadmin/bqjadmin/bqjadmin/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../运维平台bqjadmin/bqjadmin/bqjadmin/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../运维平台bqjadmin/bqjadmin/bqjadmin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../运维平台bqjadmin/bqjadmin/bqjadmin/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +61,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="WARN_ABOUT_CRLF" value="false" />
     <option name="WARN_ABOUT_DETACHED_HEAD" value="false" />
@@ -90,6 +98,7 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -97,8 +106,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/project/qiqigit/python/项目代码/运维平台bqjadmin/bqjadmin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="options.lastSelected" value="File.Encoding" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -160,6 +170,7 @@
       <option name="presentableId" value="Default" />
       <updated>1542418081282</updated>
       <workItem from="1614221331469" duration="10439000" />
+      <workItem from="1614308935934" duration="787000" />
     </task>
     <servers />
   </component>
