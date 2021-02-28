@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c109e5ed-7933-4eca-91bb-06a3c19959f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../权限控制组件rbac/auto_luffy/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../cmdb雏形/autocmdb/autocmdb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmdb雏形/autocmdb/autocmdb/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../权限控制组件rbac/auto_luffy/.idea/dataSources/822021ab-65e8-4ceb-afdf-bbce4c501bdb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../权限控制组件rbac/auto_luffy/.idea/dataSources/822021ab-65e8-4ceb-afdf-bbce4c501bdb.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../权限控制组件rbac/auto_luffy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../权限控制组件rbac/auto_luffy/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,23 +38,23 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../tt" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/ht" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/cmdb/views" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/rbac/templates/rbac" />
       <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/rbac/templates" />
       <recent name="$PROJECT_DIR$/cmdb" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ht" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/cmdb/views" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.bqjadmin">
@@ -222,6 +217,7 @@
       <workItem from="1614216223414" duration="663000" />
       <workItem from="1614308273470" duration="2307000" />
       <workItem from="1614314547140" duration="1244000" />
+      <workItem from="1614494487603" duration="107000" />
     </task>
     <servers />
   </component>
@@ -229,10 +225,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2660" y="280" key="FileChooserDialogImpl" timestamp="1614309807691">
+    <state x="2660" y="280" key="FileChooserDialogImpl" timestamp="1614494592779">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state x="2660" y="280" key="FileChooserDialogImpl/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614309807691" />
+    <state x="2660" y="280" key="FileChooserDialogImpl/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614494592779" />
     <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1614311207224">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
@@ -253,10 +249,10 @@
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="2381" y="167" key="SettingsEditor/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614309724153" />
-    <state x="2560" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1614216230547">
+    <state x="2560" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1614494486810">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state x="2560" y="349" key="com.intellij.ide.util.TipDialog/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614216230547" />
+    <state x="2560" y="349" key="com.intellij.ide.util.TipDialog/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614494486810" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/bqjadmin$md5.coverage" NAME="md5 Coverage Results" MODIFIED="1584948906873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cmdb/utils" />
