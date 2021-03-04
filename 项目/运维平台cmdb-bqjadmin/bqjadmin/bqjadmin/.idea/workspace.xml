@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c109e5ed-7933-4eca-91bb-06a3c19959f6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../cmdb雏形/autocmdb/autocmdb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmdb雏形/autocmdb/autocmdb/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="bqjadmin" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1XbgaG9K3i0GXdS8ifnWo8bUKyy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../autoclient" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/rbac/templates/rbac" />
+      <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/rbac/templates" />
+      <recent name="$PROJECT_DIR$/cmdb" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ht" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/cmdb/views" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.tt">
+    <configuration name="aa" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="bqjadmin" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ht/aa.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="md5" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="bqjadmin" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cmdb/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cmdb/utils/md5.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tt" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="bqjadmin" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tt.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="bqjadmin" type="Python.DjangoServer" factoryName="Django server">
+      <module name="bqjadmin" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="bqjadmin.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.tt" />
+        <item itemvalue="Python.aa" />
+        <item itemvalue="Python.md5" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c109e5ed-7933-4eca-91bb-06a3c19959f6" name="Default Changelist" comment="" />
+      <created>1578987018229</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578987018229</updated>
+      <workItem from="1578987023931" duration="21436000" />
+      <workItem from="1581320279031" duration="1157000" />
+      <workItem from="1581571695403" duration="10213000" />
+      <workItem from="1581600620835" duration="5000" />
+      <workItem from="1581922126057" duration="2085000" />
+      <workItem from="1582009463634" duration="618000" />
+      <workItem from="1582086777258" duration="3918000" />
+      <workItem from="1582525481790" duration="6365000" />
+      <workItem from="1582612381182" duration="892000" />
+      <workItem from="1582692926075" duration="9155000" />
+      <workItem from="1582771108217" duration="16495000" />
+      <workItem from="1583068300144" duration="315000" />
+      <workItem from="1583130682774" duration="3617000" />
+      <workItem from="1583209821258" duration="9279000" />
+      <workItem from="1583383270695" duration="2357000" />
+      <workItem from="1583468661222" duration="4214000" />
+      <workItem from="1583567656863" duration="955000" />
+      <workItem from="1583569657054" duration="939000" />
+      <workItem from="1583729642900" duration="286000" />
+      <workItem from="1583730240983" duration="7800000" />
+      <workItem from="1583815997825" duration="6093000" />
+      <workItem from="1583901323428" duration="1886000" />
+      <workItem from="1583992424920" duration="26639000" />
+      <workItem from="1584340692335" duration="1029000" />
+      <workItem from="1584417000662" duration="308000" />
+      <workItem from="1584419657558" duration="11895000" />
+      <workItem from="1584498429587" duration="10000" />
+      <workItem from="1584498497549" duration="18144000" />
+      <workItem from="1584672077312" duration="7196000" />
+      <workItem from="1584943382453" duration="96000" />
+      <workItem from="1584943601807" duration="117000" />
+      <workItem from="1584944476857" duration="9330000" />
+      <workItem from="1585031435771" duration="37777000" />
+      <workItem from="1585279677563" duration="18880000" />
+      <workItem from="1585366226024" duration="8724000" />
+      <workItem from="1585538419198" duration="2253000" />
+      <workItem from="1585622329864" duration="3849000" />
+      <workItem from="1585718869022" duration="728000" />
+      <workItem from="1585809815871" duration="1303000" />
+      <workItem from="1585917579562" duration="1255000" />
+      <workItem from="1586930069999" duration="202000" />
+      <workItem from="1587522141106" duration="125000" />
+      <workItem from="1587522336898" duration="1014000" />
+      <workItem from="1587525821863" duration="1488000" />
+      <workItem from="1587527640592" duration="1237000" />
+      <workItem from="1587616299028" duration="519000" />
+      <workItem from="1597932116359" duration="209000" />
+      <workItem from="1614162667437" duration="2441000" />
+      <workItem from="1614216223414" duration="663000" />
+      <workItem from="1614308273470" duration="2307000" />
+      <workItem from="1614314547140" duration="1244000" />
+      <workItem from="1614494487603" duration="107000" />
+      <workItem from="1614592732172" duration="617000" />
+      <workItem from="1614763019511" duration="3711000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2560" y="398" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614765495217">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2560" y="398" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614765495217" />
+    <state x="2660" y="280" key="FileChooserDialogImpl" timestamp="1614592823135">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2660" y="280" key="FileChooserDialogImpl/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614592823135" />
+    <state width="860" height="282" key="GridCell.Tab.0.bottom" timestamp="1614839170604">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="860" height="282" key="GridCell.Tab.0.bottom/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614839170604" />
+    <state width="860" height="282" key="GridCell.Tab.0.center" timestamp="1614839170603">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="860" height="282" key="GridCell.Tab.0.center/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614839170603" />
+    <state width="860" height="282" key="GridCell.Tab.0.left" timestamp="1614839170603">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="860" height="282" key="GridCell.Tab.0.left/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614839170603" />
+    <state width="860" height="282" key="GridCell.Tab.0.right" timestamp="1614839170604">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="860" height="282" key="GridCell.Tab.0.right/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614839170604" />
+    <state x="2381" y="167" key="SettingsEditor" timestamp="1614309724153">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2381" y="167" key="SettingsEditor/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614309724153" />
+    <state x="2560" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1614838969509">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2560" y="349" key="com.intellij.ide.util.TipDialog/0.0.1536.834/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614838969509" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/bqjadmin$md5.coverage" NAME="md5 Coverage Results" MODIFIED="1584948906873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cmdb/utils" />
+    <SUITE FILE_PATH="coverage/bqjadmin$tt.coverage" NAME="tt Coverage Results" MODIFIED="1614839170593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/bqjadmin$aa.coverage" NAME="aa Coverage Results" MODIFIED="1587528869006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
