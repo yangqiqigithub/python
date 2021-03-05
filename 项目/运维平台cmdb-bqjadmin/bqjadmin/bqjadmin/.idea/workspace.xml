@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c109e5ed-7933-4eca-91bb-06a3c19959f6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../cmdb雏形/autocmdb/autocmdb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../cmdb雏形/autocmdb/autocmdb/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c109e5ed-7933-4eca-91bb-06a3c19959f6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -221,6 +218,7 @@
       <workItem from="1614494487603" duration="107000" />
       <workItem from="1614592732172" duration="617000" />
       <workItem from="1614763019511" duration="3711000" />
+      <workItem from="1614838964448" duration="1405000" />
     </task>
     <servers />
   </component>
